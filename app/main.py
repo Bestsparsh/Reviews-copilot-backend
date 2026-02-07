@@ -28,7 +28,7 @@ async def verify_api_key(api_key: str = Security(api_key_header)):
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "https://reviews-copilot-vert.vercel.app/",
+        "https://reviews-copilot-vert.vercel.app",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
     ],
@@ -40,6 +40,11 @@ app.add_middleware(
 @app.on_event("startup")
 def on_startup():
     init_db()
+
+
+@app.get("/")
+def root():
+    return {"message": "Reviews Copilot API is running", "docs": "/docs"}
 
 
 @app.get("/health")
