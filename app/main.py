@@ -28,6 +28,7 @@ async def verify_api_key(api_key: str = Security(api_key_header)):
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
+        "https://reviews-copilot-vert.vercel.app/",
         "http://localhost:3000",
         "http://127.0.0.1:3000",
     ],
