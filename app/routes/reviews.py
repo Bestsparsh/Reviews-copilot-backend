@@ -49,7 +49,8 @@ def suggest_reply(review_id: int, session: Session = Depends(get_session)):
         print(f"Error generating reply: {str(e)}")
         return {
             "reply": "Thank you for your feedback. We appreciate you taking the time to share your experience with us.",
-            "similar_reviews": []
+            "similar_reviews": [],
+            "debug_error": str(e)
         }
 
 @router.get("/", response_model=dict)
